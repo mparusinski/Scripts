@@ -36,4 +36,4 @@ $thisyear  = $thisyear + 1900;
 
 my $newbackup = "$backupdir/backup.$thisday.$thismonth.$thisyear/";
 system "sudo mkdir -p $newbackup";
-system "sudo rsync -av --delete --link-dest=$backupdir/backup.$day.$month.$year ~/ $newbackup";
+system "sudo rsync -av --delete --link-dest=$backupdir/backup.$year.$month.$day ~/ $newbackup";
