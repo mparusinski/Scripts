@@ -16,9 +16,9 @@ foreach (@dirlist) {
 	my $currdir = $_;
 	if ($currdir =~ /backup.([0-9]{1,2}).([0-9]{1,2}).([0-9]{4})/) {
 		print $currdir."\n";
-		my $currday   = $1;
+		my $currday   = $3;
 		my $currmonth = $2;
-		my $curryear  = $3;
+		my $curryear  = $1;
 		if ($curryear > $year
 			or ($curryear == $year and $currmonth > $month)
 			or ($curryear == $year and $currmonth == $month and $currday > $day)) {
