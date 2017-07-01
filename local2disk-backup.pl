@@ -14,7 +14,7 @@ my $month = 0;
 my $year  = 0;
 foreach (@dirlist) {
 	my $currdir = $_;
-	if ($currdir =~ /backup.([0-9]{1,2}).([0-9]{1,2}).([0-9]{4})/) {
+	if ($currdir =~ /backup.([0-9]+).([0-9]+).([0-9]+/) {
 		print $currdir."\n";
 		my $currday   = $3;
 		my $currmonth = $2;
