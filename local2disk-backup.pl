@@ -16,9 +16,9 @@ foreach (@dirlist) {
 	my $currdir = $_;
 	if ($currdir =~ /backup.([0-9]+).([0-9]+).([0-9]+)/) {
 		print $currdir."\n";
-		my $currday   = $3;
-		my $currmonth = $2;
 		my $curryear  = $1;
+		my $currmonth = $2;
+		my $currday   = $3;
 		if ($curryear > $year
 			or ($curryear == $year and $currmonth > $month)
 			or ($curryear == $year and $currmonth == $month and $currday > $day)) {
@@ -35,6 +35,6 @@ $thisday   = ($thisday <= 9 ? "0" :  "") . $thisday;
 $thismonth = ($thismonth <= 8 ? "0" : "") . $thismonth + 1;
 $thisyear  = $thisyear + 1900;
 
-my $newbackup = "$backupdir/backup.$thisyear.$thismonth.$thisday/";
+my $newbackup = "$backupdir/backup.$thisyear.$thismonth.$thisyear/";
 system "sudo mkdir -p $newbackup";
-system "sudo rsync -av --delete --link-dest=$backupdir/backup.$year.$month.$day ~/ $newbackup";
+system "sudo rsync -av --delete --progress --link-dest=$backupdir/backup.$year.$month.$day ~/ $newbackup";
