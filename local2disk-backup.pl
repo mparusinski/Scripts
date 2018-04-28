@@ -35,6 +35,9 @@ $thisday   = ($thisday <= 9 ? "0" :  "") . $thisday;
 $thismonth = ($thismonth <= 8 ? "0" : "") . $thismonth + 1;
 $thisyear  = $thisyear + 1900;
 
-my $newbackup = "$backupdir/backup.$thisyear.$thismonth.$thisyear/";
-system "sudo mkdir -p $newbackup";
-system "sudo rsync -av --delete --progress --link-dest=$backupdir/backup.$year.$month.$day ~/ $newbackup";
+my $newbackupdir = "$backupdir/backup.$thisyear.$thismonth.$thisday/";
+my $oldbackupdir = "$backupdir/backup.$year.$month.$day/";
+print "Found backup directory $oldbackupdir\n";
+print "Writing to new backup directory $newbackupdir\n";
+system "sudo mkdir -p $newbackupdir";
+system "sudo rsync -av --delete --progress --link-dest=$oldbackupdir ~/ $newbackupdir"
