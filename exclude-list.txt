@@ -1,0 +1,4 @@
+Remote
+Public
+~.ecryptfs
+~.Private
